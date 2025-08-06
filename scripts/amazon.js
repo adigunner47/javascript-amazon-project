@@ -5,6 +5,8 @@ Writing a Javascript file basically follow 3 steps:
 3) Make it interactive.
 */
 
+// const { fa } = require("zod/v4/locales");
+
 
 //The data is saved as arrays and objects in products.js file.
 //The products array will be used to generate the HTML for the products page.
@@ -57,9 +59,35 @@ products.forEach(product =>{
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary"
+          data-product-id="${product.id}" data-product-quantity>
             Add to Cart
           </button>
         </div>
   ` 
 })
+
+
+document.querySelectorAll('.add-to-cart-button').forEach(button => {
+  button.addEventListener('click', () => {
+    let itemMatched=false;
+    cart.forEach(item => {
+      if (item.id === button.dataset.productId) {
+        item.quantity++;
+        itemMatched = true;
+        return;
+      }
+    })
+
+    
+    if (!itemMatched) {
+      cart.push({
+        id: button.dataset.productId,
+        quantity: 1
+    })}
+
+    })
+    
+  })
+
+
