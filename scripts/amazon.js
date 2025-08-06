@@ -86,6 +86,9 @@ document.querySelectorAll('.add-to-cart-button').forEach(button => {
         quantity: 1
     })}
 
+    
+    document.querySelector('.cart-quantity').innerHTML = findCartQuantity();
+
     })
     
   })
