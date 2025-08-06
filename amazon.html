@@ -63,7 +63,7 @@
          The script elements are ran one by one so its important to 
          run products.js first -->
     <script src="/data/products.js"> </script>
-    <script src="/data/cart.js"> </script>
-    <script src="/scripts/amazon.js">  </script>
+    <!-- <script src="/data/cart.js"> </script> --> <!-- cart.js will be used as a module -->
+    <script type="module" src="/scripts/amazon.js">  </script> <!-- The type=module will let amazon.js file get variables out of other files-->
   </body>
 </html>

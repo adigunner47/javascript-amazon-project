@@ -11,6 +11,8 @@ Writing a Javascript file basically follow 3 steps:
 //The data is saved as arrays and objects in products.js file.
 //The products array will be used to generate the HTML for the products page.
 
+import {cart, findCartQuantity} from '../data/cart.js' //Importing cart variable and findCartQuantity function from cart.js file
+
 
 document.querySelector('.products-grid').innerHTML  = ``;
 products.forEach(product =>{
