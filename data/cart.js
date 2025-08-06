@@ -14,7 +14,7 @@ export function addToCart(productId) {
     if (!itemMatched) {
       cart.push({
         id: productId,
-        quantity: 1
+        quantity: 1,
     })}
 }
 

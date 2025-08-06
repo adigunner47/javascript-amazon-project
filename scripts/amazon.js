@@ -78,7 +78,7 @@ function updateCartQuantity() {
     cartQuantity+= item.quantity
   });
 
-  document.querySelector('.cart-quantity').innerHTML = findCartQuantity();
+  document.querySelector('.cart-quantity').innerHTML = cartQuantity
 
 }
 
@@ -88,6 +88,7 @@ document.querySelectorAll('.add-to-cart-button').forEach(button => {
     addToCart(button.dataset.productId);
     
     updateCartQuantity();
+    console.log(cart);
 
     })
     
