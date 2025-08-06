@@ -12,8 +12,9 @@ Writing a Javascript file basically follow 3 steps:
 //The products array will be used to generate the HTML for the products page.
 
 import {cart, addToCart} from '../data/cart.js' //Importing cart variable and findCartQuantity function from cart.js file
-
 import {products} from '../data/products.js' //Importing products array from products.js file
+import {formatCurrency} from './utils/money.js' //Importing formatCurrency function from money.js file
+
 
 document.querySelector('.products-grid').innerHTML  = ``;
 products.forEach(product =>{
@@ -37,7 +38,7 @@ products.forEach(product =>{
           </div>
 
           <div class="product-price">
-            $${(product.priceCents/100).toFixed(2)}
+            $${formatCurrency(product.priceCents)}
           </div>
 
           <div class="product-quantity-container">
