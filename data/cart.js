@@ -1,4 +1,9 @@
-export const cart = [] //Exporting cart variable to be used in other files
+export const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+
+
+export function saveToStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 export function addToCart(productId) {
   let itemMatched=false;
@@ -16,6 +21,8 @@ export function addToCart(productId) {
         id: productId,
         quantity: 1,
     })}
+
+    saveToStorage();
 }
 
 export function removeFromCart(productId) {
@@ -23,6 +30,7 @@ export function removeFromCart(productId) {
   if (itemIndex !== -1) {
     cart.splice(itemIndex, 1);
   }
+  saveToStorage();
 }
 
 
