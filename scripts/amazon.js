@@ -89,7 +89,6 @@ document.querySelectorAll('.add-to-cart-button').forEach(button => {
     addToCart(button.dataset.productId);
     
     updateCartQuantity();
-    console.log(cart);
 
     })
     

@@ -18,4 +18,11 @@ export function addToCart(productId) {
     })}
 }
 
+export function removeFromCart(productId) {
+  const itemIndex = cart.findIndex(item => item.id === productId);
+  if (itemIndex !== -1) {
+    cart.splice(itemIndex, 1);
+  }
+}
+
 
