@@ -13,6 +13,7 @@ Writing a Javascript file basically follow 3 steps:
 
 import {cart, findCartQuantity} from '../data/cart.js' //Importing cart variable and findCartQuantity function from cart.js file
 
+import {products} from '../data/products.js' //Importing products array from products.js file
 
 document.querySelector('.products-grid').innerHTML  = ``;
 products.forEach(product =>{
