@@ -18,11 +18,12 @@ cart.forEach((cartItem) => {
     }
   });
 
+
   cartSummaryHTML += `
     <div class="cart-item-container
       js-cart-item-container-${matchingProduct.id}">
-      <div class="delivery-date">
-        Delivery date: Tuesday, June 21
+      <div class="delivery-date-${matchingProduct.id} delivery-date" >
+        Delivery date: ${getDeliveryDate(7)}
       </div>
 
       <div class="cart-item-details-grid">
@@ -53,7 +54,7 @@ cart.forEach((cartItem) => {
           <div class="delivery-options-title">
             Choose a delivery option:
           </div>
-          <div class="delivery-option">
+          <div class="delivery-option" data-delivery-date="${getDeliveryDate(7)}" data-product-id="${matchingProduct.id}">
             <input type="radio" checked
               class="delivery-option-input"
               name="delivery-option-${matchingProduct.id}">
@@ -66,7 +67,7 @@ cart.forEach((cartItem) => {
               </div>
             </div>
           </div>
-          <div class="delivery-option">
+          <div class="delivery-option" data-delivery-date= "${getDeliveryDate(3)}" data-product-id="${matchingProduct.id}">
             <input type="radio"
               class="delivery-option-input"
               name="delivery-option-${matchingProduct.id}">
@@ -79,7 +80,7 @@ cart.forEach((cartItem) => {
               </div>
             </div>
           </div>
-          <div class="delivery-option">
+          <div class="delivery-option" data-delivery-date="${getDeliveryDate(1)}" data-product-id="${matchingProduct.id}">
             <input type="radio"
               class="delivery-option-input"
               name="delivery-option-${matchingProduct.id}">
@@ -116,6 +117,14 @@ document.querySelectorAll('.delete-quantity-link').forEach(link => {
     removeFromCart(link.dataset.productId);
     document.querySelector(`.js-cart-item-container-${link.dataset.productId}`).remove();
   })
+})
+
+document.querySelectorAll('.delivery-option').forEach(input => {
+  input.addEventListener('click', () => {
+
+    console.log(input.dataset.deliveryDate, input.dataset.productId);
+    document.querySelector(`.delivery-date-${input.dataset.productId}`).innerHTML = `Delivery date: ${input.dataset.deliveryDate}`;
+  });
 })
 
 
