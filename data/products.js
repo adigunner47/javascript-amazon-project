@@ -1,6 +1,8 @@
 import { formatCurrency } from '../scripts/utils/money.js'
 
 
+
+//'this' features lets an object its own property
 class Product {
   id;
   image;
