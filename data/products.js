@@ -688,3 +688,16 @@ export const products = [
 ].map((product)=>{
   return new Product(product);
 })
+
+
+//: A class will inherit all the properties of parent class which it inherits from. Inherhitance lets us reuse code between classes. 
+class Clothing extends Product {
+  sizeChartLink;
+  constructor (productDetails){
+    super(productDetails); //Super basically calls the constructor of the parent class
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+}
+
+tSHirt = new Clothing();
+tSHirt.priceCents;
