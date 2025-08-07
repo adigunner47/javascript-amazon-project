@@ -3,21 +3,21 @@
 //A class a better way to generate objects also comes with some ectra OOP features.
 
 class Cart {
-  cartItems;
-  localStorageKey;
+  cartItems; //This is a public property
+  #localStorageKey; //Private property: The # makes this private so it coud only be accessed inside the class
 
   //With evert creation of object, the below constructor code/function will be ran. So this is a good place to to have our setup/initialization code.
   constructor(localStorageKey){
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  loadFromStorage(){
-    this.cartItems = localStorage.getItem(this.localStorageKey) ? JSON.parse(localStorage.getItem(this.localStorageKey)) : [];
+  #loadFromStorage(){
+    this.cartItems = localStorage.getItem(this.#localStorageKey) ? JSON.parse(localStorage.getItem(this.#localStorageKey)) : [];
   }
 
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
 
   addToCart(productId) {
