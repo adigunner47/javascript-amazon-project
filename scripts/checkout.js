@@ -1,6 +1,9 @@
-import {cart, removeFromCart} from '../data/cart.js' //Importing cart variable from cart.js file
-import {products} from '../data/products.js' //Importing products array from products.js file
-import {formatCurrency} from './utils/money.js' //Importing formatCurrency function from money.js file
+import {cart, removeFromCart} from '../data/cart.js'; //Importing cart variable from cart.js file
+import {products} from '../data/products.js'; //Importing products array from products.js file
+import {formatCurrency} from './utils/money.js'; //Importing formatCurrency function from money.js file
+import {deliveryOptions} from '../data/deliveryOptions.js'; //Importing deliveryOptions array from deliveryOptions.js file
+
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 
 let cartSummaryHTML = '';
@@ -56,7 +59,7 @@ cart.forEach((cartItem) => {
               name="delivery-option-${matchingProduct.id}">
             <div>
               <div class="delivery-option-date">
-                Tuesday, June 21
+                ${getDeliveryDate(7)}
               </div>
               <div class="delivery-option-price">
                 FREE Shipping
@@ -69,7 +72,7 @@ cart.forEach((cartItem) => {
               name="delivery-option-${matchingProduct.id}">
             <div>
               <div class="delivery-option-date">
-                Wednesday, June 15
+                ${getDeliveryDate(3)}
               </div>
               <div class="delivery-option-price">
                 $4.99 - Shipping
@@ -82,7 +85,7 @@ cart.forEach((cartItem) => {
               name="delivery-option-${matchingProduct.id}">
             <div>
               <div class="delivery-option-date">
-                Monday, June 13
+                ${getDeliveryDate(1)}
               </div>
               <div class="delivery-option-price">
                 $9.99 - Shipping
@@ -101,6 +104,12 @@ document.querySelector('.js-order-summary')
 // document.querySelector('.order-summary')
 //   .innerHTML = `<p>Your cart is empty.</p>`;
 
+
+function getDeliveryDate(deliveryDays) {
+  const today = dayjs();
+  const deliveryDate = today.add(deliveryDays, 'day');
+  return deliveryDate.format('dddd, MMMM D');
+}
 
 document.querySelectorAll('.delete-quantity-link').forEach(link => {
   link.addEventListener('click', () => {
